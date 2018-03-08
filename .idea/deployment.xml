@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData" autoUpload="Always" serverName="ssh://root@192.168.255.133:22/root/virtualenvs/shopping/bin/python3.6" autoUploadExternalChanges="true">
+    <serverData>
+      <paths name="MOOC">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="ssh://root@192.168.255.133:22/root/virtualenvs/shopping/bin/python3.6">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/opt/project/MOOC" local="$PROJECT_DIR$" />
+          </mappings>
+        </serverdata>
+      </paths>
+    </serverData>
+    <option name="myAutoUpload" value="ALWAYS" />
+  </component>
+</project>

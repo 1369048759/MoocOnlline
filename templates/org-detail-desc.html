@@ -1,0 +1,29 @@
+{% extends 'base-org-detail.html' %}
+{% load staticfiles %}
+{% block titile %}机构介绍{% endblock %}
+{% block bread %}
+<section>
+	<div class="wp">
+		<ul  class="crumbs">
+            <li><a href="{% url 'index' %}">首页</a>></li>
+			<li><a href="{% url 'org:org_home' course_org.id %}">课程机构</a>></li>
+			<li>机构介绍</li>
+		</ul>
+	</div>
+</section>
+{% endblock %}
+{% block right_content %}
+<div class="right companycenter layout" >
+    <div class="head">
+        <h1>机构介绍</h1>
+    </div>
+    <div class="des">
+        <p>{{ course_org.detail }}</p>
+        {% for org_image in org_images %}
+            <img src="{{ MEDIA_URL }}{{ org_image.image }}" width="940" height="550" alt="" />
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
+
+

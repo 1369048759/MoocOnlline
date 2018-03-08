@@ -1,0 +1,67 @@
+{% extends 'base-usercenter.html' %}
+{% load staticfiles %}
+{% block title%}我的消息{% endblock %}
+{% block bread %}
+<section>
+    <div class="wp">
+        <ul  class="crumbs">
+            <li><a href="{% url 'index' %}">首页</a>></li>
+            <li><a href="{% url 'operate:user_info' %}">个人中心</a>></li>
+            <li>我的消息</li>
+        </ul>
+    </div>
+</section>
+{% endblock %}
+{% block right_content %}
+<div class="right" >
+    <div class="personal_des Releasecont">
+        <div class="head">
+            <h1>我的消息</h1>
+        </div>
+
+    </div>
+    <div class="personal_des permessage">
+        <div class="head">
+            <ul class="tab_header messagehead">
+                <li class="{% if sort == '' %}active{% endif%}">
+                    <a href="?sort=">未读({{ no_read_nums }})</a> </li>
+                <li class="{% if sort == 'has_read' %}active{% endif %}">
+                    <a href="?sort=has_read">已读({{ has_read_nums }})</a> </li>
+            </ul>
+        </div>
+
+        <div class="messagelist">
+            <div class="messages">
+            {% for message in user_messages.object_list %}
+                <div class="fr">
+                    <div class="top"><span class="fl time">{{ message.add_time }}</span><span class="fr btn foldbtn"></span></div>
+                    <p>{{ message.message }}</p>
+                </div>
+            {% endfor %}
+            </div>
+        </div>
+
+        <div class="pageturn">
+                <ul class="pagelist">
+                {% if user_messages.has_previous %}
+                    <li class="long"><a href="?{{ user_messages.previous_page_number.querystring }}">前一页</a></li>
+                {% endif %}
+                {% for page in user_messages.pages %}
+                    {% if page %}
+                        {% ifequal page user_messages.number %}
+                            <li class="active"><a href="?page=1">{{ page }}</a></li>
+                        {% else %}
+                            <li class=""><a href="?{{ page.querystring }}">{{ page }}</a></li>
+                        {% endifequal %}
+                    {% else %}
+                        <li class="none"><a href="">None</a></li>
+                    {% endif %}
+                {% endfor %}
+                {% if user_messages.has_next %}
+                     <li class="long"><a href="?{{ user_messages.next_page_number.querystring }}">下一页</a></li>
+                {% endif %}
+                </ul>
+            </div>
+        </div>
+</div>
+{% endblock %}
